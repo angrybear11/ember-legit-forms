@@ -11,7 +11,7 @@ export default Mixin.create({
   eventDispatcher: service('lf-event-dispatcher'),
 
   classNames: ['form-group'],
-  classNameBindings: ['validationState'],
+  classNameBindings: ['validationState', "hasValue:is-filled:is-not-filled"],
   name: null, //passed in
   property: null, //passed in
   errorClass: 'has-error',
@@ -74,6 +74,11 @@ export default Mixin.create({
     if (!get(this, 'validationStateVisible')) { return ''; }
     if (!get(this, 'valid')) { return get(this, 'errorClass'); }
     return get(this, 'successClass');
+  }),
+
+  hasValue: computed('_value', function() {
+    let v = this.get('_value');
+    return v !== null && v !== undefined && v !== "";
   }),
 
   errorMessages: computed('errors', 'validationErrorMessages', function() {
