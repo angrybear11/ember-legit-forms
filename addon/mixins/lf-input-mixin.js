@@ -76,9 +76,10 @@ export default Mixin.create({
     return get(this, 'successClass');
   }),
 
-  hasValue: computed('_value', function() {
+  hasValue: computed('_value', 'property', function() {
     let v = this.get('_value');
-    return v !== null && v !== undefined && v !== "";
+    let p = this.get('property');
+    return (v !== null && v !== undefined && v !== "") || (p !== null && p !== undefined && p !== "");
   }),
 
   errorMessages: computed('errors', 'validationErrorMessages', function() {
