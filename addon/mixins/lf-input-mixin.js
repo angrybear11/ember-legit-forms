@@ -76,6 +76,10 @@ export default Mixin.create({
     return get(this, 'successClass');
   }),
 
+  showHintMessages: computed('validationStateVisible', function() {
+    return !get(this, 'validationStateVisible');
+  }),
+
   hasValue: computed('_value', 'property', function() {
     let v = this.get('_value');
     let p = this.get('property');
@@ -90,6 +94,17 @@ export default Mixin.create({
     }
 
     return get(this, 'validationErrorMessages');
+  }),
+
+  hintMessages: computed('hints', function() {
+    const externalHints = get(this, 'hints');
+
+    if (externalHints) {
+      const hints = isArray(externalHints) ? externalHints : [externalHints];
+      return hints;
+    }
+
+    return [];
   }),
 
   focusOut() {

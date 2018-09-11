@@ -16,6 +16,8 @@ function fallBack(fallback) {
 export default Component.extend({
   layout,
   showErrorMessages: fallBack(true),
+  showHintMessages: fallBack(true),
   labelComponent: fallBack('lf-bootstrap-label'),
   errorMessagesComponent: fallBack('lf-bootstrap-errors'),
+  hintMessagesComponent: fallBack('lf-bootstrap-hints'),
 });
