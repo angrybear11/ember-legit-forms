@@ -76,8 +76,19 @@ export default Mixin.create({
     return get(this, 'successClass');
   }),
 
-  showHintMessages: computed('validationStateVisible', function() {
-    return !get(this, 'validationStateVisible');
+  showHintMessages: computed('validationStateVisible', 'errorMessages.[]', function() {
+    let v = get(this, 'validationStateVisible');
+    let e = get(this, 'errorMessages');
+
+    let noErrors = (e === null || e === undefined || e.get('length') <= 0);
+
+    if (noErrors) {
+      return true;
+    } else if (!v) {
+      return true;
+    } else {
+      return false;
+    }
   }),
 
   hasValue: computed('_value', 'property', function() {
