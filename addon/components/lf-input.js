@@ -12,6 +12,7 @@ export default Component.extend(LFInputMixin, {
   inputClass: null,
   addonPlacement: 'before',
   inputComponent: 'one-way-input',
+  autocapitalize: "none",
 
   //eslint-disable-next-line ember/no-observers
   propChanged: observer('property', function() {
