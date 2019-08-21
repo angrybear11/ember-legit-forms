@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { observer, get } from '@ember/object';
+import { observer, get, computed } from '@ember/object';
 import { isNone } from '@ember/utils';
 import layout from '../templates/components/lf-select';
 import LFInputMixin from '../mixins/lf-input-mixin';
@@ -9,6 +9,7 @@ export default Component.extend(LFInputMixin, {
   _inputName: 'lf-select',
   content: null, //passed in
   prompt: '-- select --', //passed in
+  disableDefault: true,
   valuePath: 'value',
   labelPath: 'label',
 
